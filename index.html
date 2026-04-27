@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barva do života – Mgr. Gabriela Smolková, psycholožka a terapeutka</title>
+<meta name="description" content="Psychologické poradenství a terapie v Ostravě. Mgr. Gabriela Smolková – bezpečný prostor pro váš osobní růst.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #FDFAF6;
+  color: #2C2416;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── DESIGN TOKENS ────────────────────────────── */
+:root {
+  --cream:    #FDFAF6;
+  --warm:     #F5EFE4;
+  --terracota:#C47B5A;
+  --terra2:   #A85F3F;
+  --sage:     #8BA888;
+  --sage2:    #6E9169;
+  --dark:     #2C2416;
+  --mid:      #6B5B48;
+  --light:    #B8A898;
+  --border:   #E8DDD0;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+}
+
+/* ── LAYOUT ───────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+.container-sm { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+/* ── HEADER ───────────────────────────────────── */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(253,250,246,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+#header.scrolled { border-color: var(--border); }
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 68px;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.nav-brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--dark);
+  line-height: 1.1;
+}
+.nav-brand-sub {
+  font-size: .68rem;
+  color: var(--light);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color .2s;
+  letter-spacing: .01em;
+}
+.nav-links a:hover { color: var(--terracota); }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 22px;
+  background: var(--terracota);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background .2s;
+  letter-spacing: .01em;
+}
+.nav-cta:hover { background: var(--terra2); }
+
+/* mobile */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: .25s;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px; left: 0; right: 0; bottom: 0;
+  background: var(--cream);
+  z-index: 99;
+  padding: 32px 28px;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 14px 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.mobile-menu a:hover { background: var(--warm); }
+.mobile-menu .nav-cta { margin-top: 12px; justify-content: center; height: 50px; border-radius: 40px; }
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: 68px;
+  gap: 0;
+}
+.hero-content {
+  padding: 80px 60px 80px 0;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--warm);
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  padding: 6px 16px;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--terracota);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-tag-dot { width: 7px; height: 7px; background: var(--sage); border-radius: 50%; }
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--terracota); }
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--mid);
+  margin-bottom: 40px;
+  max-width: 48ch;
+}
+.hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 30px;
+  background: var(--terracota);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--terra2); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 30px;
+  background: transparent;
+  color: var(--mid);
+  font-size: .95rem;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 1.5px solid var(--border);
+  transition: border-color .2s, color .2s;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--terracota); color: var(--terracota); }
+.hero-photo {
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+}
+.hero-photo-inner {
+  position: absolute;
+  inset: 0;
+  background: var(--warm);
+}
+.hero-photo-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--light);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.hero-photo-placeholder svg { opacity: .4; width: 48px; height: 48px; }
+.hero-badge {
+  position: absolute;
+  bottom: 40px;
+  left: -24px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 22px;
+  box-shadow: 0 8px 32px rgba(44,36,22,.12);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: .82rem;
+}
+.hero-badge-icon {
+  width: 40px; height: 40px;
+  background: var(--warm);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.hero-badge-text strong { display: block; color: var(--dark); font-weight: 600; margin-bottom: 2px; }
+.hero-badge-text span { color: var(--light); font-size: .75rem; }
+
+/* ── SECTION BASE ─────────────────────────────── */
+.section { padding: 100px 0; }
+.section-sm { padding: 72px 0; }
+.section-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--terracota); }
+.section-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--mid);
+  max-width: 52ch;
+}
+
+/* ── O MNĚ ────────────────────────────────────── */
+.about { background: var(--warm); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-photo {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--light);
+  font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+  flex-direction: column; gap: 12px;
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-photo svg { opacity: .3; width: 40px; height: 40px; }
+.about-content .section-lead { margin-bottom: 28px; max-width: none; }
+.about-content p { font-size: 1rem; line-height: 1.75; color: var(--mid); margin-bottom: 18px; }
+.about-content p:last-child { margin-bottom: 0; }
+.about-credentials {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.cred-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cred-dot {
+  width: 8px; height: 8px;
+  background: var(--sage);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.cred-text { font-size: .9rem; line-height: 1.5; color: var(--mid); }
+.cred-text strong { color: var(--dark); font-weight: 600; }
+
+/* ── CO NABÍZÍM ───────────────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.service-card {
+  background: var(--warm);
+  border-radius: 18px;
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  transition: transform .25s, box-shadow .25s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(44,36,22,.08);
+}
+.service-card-icon {
+  width: 52px; height: 52px;
+  background: var(--cream);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+.service-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.service-card p { font-size: .9rem; line-height: 1.65; color: var(--mid); }
+.service-card-highlight {
+  background: var(--dark);
+  color: #fff;
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.service-card-highlight:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,36,22,.15); }
+.sc-hi-left { padding: 44px 48px; border-right: 1px solid rgba(255,255,255,.1); }
+.sc-hi-left h3 { font-family: var(--font-serif); font-size: 1.6rem; color: #fff; margin-bottom: 14px; }
+.sc-hi-left p  { font-size: .95rem; line-height: 1.7; color: rgba(255,255,255,.6); }
+.sc-hi-right { padding: 44px 48px; }
+.sc-hi-right h4 {
+  font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--terracota); margin-bottom: 20px;
+}
+.sc-steps { display: flex; flex-direction: column; gap: 12px; }
+.sc-step {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.45;
+}
+.sc-step-dot {
+  width: 6px; height: 6px;
+  background: var(--sage);
+  border-radius: 50%;
+  margin-top: 7px; flex-shrink: 0;
+}
+
+/* ── CENÍK ────────────────────────────────────── */
+.pricing { background: var(--warm); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+.price-card {
+  background: var(--cream);
+  border-radius: 18px;
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.price-card-featured {
+  background: var(--terracota);
+  border-color: var(--terracota);
+  color: #fff;
+}
+.price-badge {
+  position: absolute;
+  top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--sage);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 40px;
+  white-space: nowrap;
+}
+.price-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.price-card-featured h3 { color: #fff; }
+.price-duration {
+  font-size: .8rem; color: var(--light);
+  margin-bottom: 24px; font-weight: 500;
+}
+.price-card-featured .price-duration { color: rgba(255,255,255,.65); }
+.price-amount {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+.price-card-featured .price-amount { color: #fff; }
+.price-per {
+  font-size: .8rem; color: var(--light);
+  margin-bottom: 28px;
+}
+.price-card-featured .price-per { color: rgba(255,255,255,.65); }
+.price-saving {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 40px;
+  margin-bottom: 28px;
+}
+.price-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+.price-card-featured .price-divider { background: rgba(255,255,255,.2); }
+.price-note { font-size: .85rem; line-height: 1.6; color: var(--mid); }
+.price-card-featured .price-note { color: rgba(255,255,255,.75); }
+
+.pricing-info {
+  margin-top: 48px;
+  background: var(--cream);
+  border-radius: 18px;
+  padding: 36px 40px;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.pricing-info h4 {
+  font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--terracota); margin-bottom: 16px;
+}
+.pricing-info p, .pricing-info li {
+  font-size: .9rem; line-height: 1.65; color: var(--mid);
+}
+.pricing-info ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.pricing-info li { display: flex; gap: 10px; align-items: flex-start; }
+.pricing-info li::before {
+  content: '–';
+  color: var(--terracota);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── TESTIMONIAL / CTA STRIP ─────────────────── */
+.strip {
+  background: var(--dark);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 90% at 50% 50%, rgba(196,123,90,.12), transparent 70%);
+}
+.strip h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #fff;
+  margin-bottom: 16px;
+  position: relative;
+}
+.strip h2 em { font-style: italic; color: var(--terracota); }
+.strip p {
+  font-size: 1rem;
+  color: rgba(255,255,255,.55);
+  max-width: 48ch;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  position: relative;
+}
+.strip .btn-primary { position: relative; }
+
+/* ── KONTAKT ──────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-info .section-lead { margin-bottom: 40px; }
+.contact-items { display: flex; flex-direction: column; gap: 24px; }
+.contact-item { display: flex; align-items: flex-start; gap: 16px; }
+.contact-icon {
+  width: 44px; height: 44px;
+  background: var(--warm);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+.contact-label {
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 3px;
+}
+.contact-val { font-size: .95rem; font-weight: 600; color: var(--dark); }
+.contact-val a { color: var(--dark); text-decoration: none; transition: color .2s; }
+.contact-val a:hover { color: var(--terracota); }
+.contact-sub { font-size: .82rem; color: var(--light); margin-top: 2px; }
+
+/* Contact form */
+.contact-form {
+  background: var(--warm);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid var(--border);
+}
+.contact-form h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 28px;
+}
+.form-group { margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 7px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: .9rem;
+  color: var(--dark);
+  background: var(--cream);
+  transition: border-color .2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--terracota); }
+.form-group textarea { resize: vertical; min-height: 108px; }
+.form-submit {
+  width: 100%;
+  height: 52px;
+  background: var(--terracota);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+.form-submit:hover { background: var(--terra2); }
+.form-note { font-size: .75rem; color: var(--light); margin-top: 12px; text-align: center; line-height: 1.4; }
+
+/* ── REZERVACE ────────────────────────────────── */
+.booking { background: var(--warm); }
+.booking-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 56px;
+}
+.booking-info p { font-size: .95rem; line-height: 1.7; color: var(--mid); margin-bottom: 20px; }
+.booking-steps { display: flex; flex-direction: column; gap: 0; margin-top: 28px; border-top: 1px solid var(--border); }
+.booking-step {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.booking-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--terracota); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+.booking-step-text { font-size: .9rem; color: var(--mid); line-height: 1.5; }
+.booking-step-text strong { color: var(--dark); display: block; margin-bottom: 2px; }
+
+/* Calendar widget */
+.cal-widget {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(44,36,22,.07);
+}
+.cal-header {
+  background: var(--terracota);
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cal-header h3 { font-family: var(--font-serif); font-size: 1.2rem; }
+.cal-nav {
+  display: flex; gap: 6px;
+}
+.cal-nav button {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,.2);
+  border: none; border-radius: 8px;
+  color: #fff; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.cal-nav button:hover { background: rgba(255,255,255,.35); }
+.cal-grid-header {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  padding: 14px 20px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.cal-grid-header span {
+  text-align: center; font-size: .7rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--light);
+}
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7,1fr);
+  gap: 4px; padding: 12px 16px 16px;
+}
+.cal-day {
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; border-radius: 8px;
+  cursor: default; color: var(--light); font-weight: 400;
+  transition: background .15s, color .15s;
+}
+.cal-day.other-month { opacity: .3; }
+.cal-day.today {
+  background: var(--warm); color: var(--dark);
+  font-weight: 700; border: 1.5px solid var(--terracota);
+}
+.cal-day.available {
+  color: var(--dark); cursor: pointer; font-weight: 500;
+}
+.cal-day.available:hover { background: var(--warm); color: var(--terracota); }
+.cal-day.selected {
+  background: var(--terracota) !important;
+  color: #fff !important; font-weight: 700;
+}
+.cal-day.unavailable { color: var(--border); cursor: not-allowed; text-decoration: line-through; }
+
+/* Time slots */
+.time-slots {
+  padding: 16px 20px 0;
+  border-top: 1px solid var(--border);
+  display: none;
+}
+.time-slots.visible { display: block; }
+.time-slots-label {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--terracota); margin-bottom: 12px;
+}
+.slots-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;
+  margin-bottom: 16px;
+}
+.slot {
+  padding: 9px 6px; text-align: center;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-size: .82rem; font-weight: 500; color: var(--mid);
+  cursor: pointer; transition: .15s;
+}
+.slot:hover { border-color: var(--terracota); color: var(--terracota); }
+.slot.selected { background: var(--terracota); border-color: var(--terracota); color: #fff; }
+.slot.taken { background: var(--warm); color: var(--light); cursor: not-allowed; text-decoration: line-through; }
+
+/* Booking form inside calendar */
+.booking-form {
+  display: none; padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.booking-form.visible { display: block; }
+.booking-form .form-group { margin-bottom: 12px; }
+.booking-form label {
+  display: block; font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--light); margin-bottom: 5px;
+}
+.booking-form input {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: .88rem;
+  color: var(--dark); background: var(--cream); outline: none;
+  transition: border-color .2s;
+}
+.booking-form input:focus { border-color: var(--terracota); }
+.booking-summary {
+  background: var(--warm); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 14px;
+  font-size: .85rem; color: var(--mid); line-height: 1.6;
+}
+.booking-summary strong { color: var(--dark); }
+.btn-book {
+  width: 100%; height: 46px;
+  background: var(--terracota); color: #fff;
+  border: none; border-radius: 40px;
+  font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 500;
+  cursor: pointer; transition: background .2s;
+}
+.btn-book:hover { background: var(--terra2); }
+.booking-success {
+  display: none; text-align: center; padding: 32px 20px;
+  border-top: 1px solid var(--border);
+}
+.booking-success-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.booking-success h4 { font-family: var(--font-serif); font-size: 1.3rem; color: var(--dark); margin-bottom: 8px; }
+.booking-success p  { font-size: .88rem; color: var(--mid); line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .booking-wrap { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .slots-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ── FOOTER ───────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 40px 0 28px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+}
+.footer-links {
+  display: flex; gap: 24px; list-style: none; flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: .82rem; color: rgba(255,255,255,.35);
+  text-decoration: none; transition: color .2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,.7); }
+.footer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: .78rem;
+  color: rgba(255,255,255,.25);
+}
+.footer-meta a { color: rgba(255,255,255,.3); text-decoration: none; }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-content { padding: 60px 0 40px; order: 1; }
+  .hero-photo { height: 480px; order: 2; }
+  .hero-badge { left: 16px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-photo { aspect-ratio: 4/3; order: -1; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card-highlight { grid-column: span 2; grid-template-columns: 1fr; }
+  .sc-hi-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .pricing-info { grid-template-columns: 1fr; gap: 28px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 680px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card-highlight { grid-column: span 1; }
+  .hero h1 { font-size: 2.2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-meta { flex-direction: column; align-items: flex-start; }
+  .hero-badge { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ────────────────────────────────── -->
+<header id="header">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-name">Barva do života</span>
+        <span class="nav-brand-sub">Mgr. Gabriela Smolková</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#co-nabizim">Co nabízím</a></li>
+        <li><a href="#cenik">Ceník</a></li>
+        <li><a href="#rezervace">Rezervace</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#rezervace" class="nav-cta">Objednat se</a>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#o-mne"      onclick="closeMenu()">O mně</a>
+  <a href="#co-nabizim" onclick="closeMenu()">Co nabízím</a>
+  <a href="#cenik"      onclick="closeMenu()">Ceník</a>
+  <a href="#rezervace"  onclick="closeMenu()">Rezervace</a>
+  <a href="#kontakt"    onclick="closeMenu()">Kontakt</a>
+  <a href="#rezervace" class="nav-cta" onclick="closeMenu()">Objednat se</a>
+</div>
+
+<main>
+
+  <!-- ── HERO ──────────────────────────────────── -->
+  <section class="hero" id="uvod">
+    <div class="container" style="display:contents">
+      <div class="hero-content" style="padding-left:clamp(28px, 5vw, 80px)">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Aktuálně přijímám nové klienty
+        </div>
+        <h1>Váš bezpečný prostor<br>pro <em>změnu</em><br>a růst</h1>
+        <p class="hero-desc">Jsem psycholožka a terapeutka v Ostravě. Nabízím prostor, kde se nemusíte bát být sami sebou — kde je možné probrat to, co trápí, a hledat cestu vpřed.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn-primary">Objednat se ke konzultaci</a>
+          <a href="#o-mne" class="btn-secondary">Zjistit více</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="hero-photo-inner">
+          <img src="IMG_8360.jpeg" alt="Mgr. Gabriela Smolková – psycholožka a terapeutka" class="hero-photo-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── O MNĚ ──────────────────────────────────── -->
+  <section class="section about" id="o-mne">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="IMG_8360.jpeg" alt="Mgr. Gabriela Smolková">
+        </div>
+        <div class="about-content">
+          <span class="section-label">O mně</span>
+          <h2 class="section-title">Jsem Gabriela,<br>psycholožka<br>a <em>terapeutka</em></h2>
+          <p>Žiji v Ostravě, jsem maminka a partnerka. Věřím, že autentický vztah — ať k sobě nebo k druhým — je základem spokojeného života. Proto ve své práci kladu důraz na bezpečí, důvěru a opravdové lidské setkání.</p>
+          <p>Pět let jsem pracovala jako psycholožka v Centru psychologické pomoci. Vedle toho jsem poskytovala online poradenství přes Mojra.cz a poradnu SPOLU. Aktuálně dokončuji pětiletý výcvik v integrativní psychoterapii se zaměřením na terapii zaměřenou na emoce (EFT).</p>
+          <div class="about-credentials">
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <span class="cred-text"><strong>Mgr. z psychologie</strong> – Univerzita Palackého v Olomouci (2020)</span>
+            </div>
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <span class="cred-text"><strong>5 let praxe</strong> v Centru psychologické pomoci</span>
+            </div>
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <span class="cred-text"><strong>Výcvik v EFT</strong> – integrativní psychoterapie (probíhá)</span>
+            </div>
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <span class="cred-text"><strong>Krizová intervence</strong> – 150 hodin (2021–2022)</span>
+            </div>
+            <div class="cred-item">
+              <div class="cred-dot"></div>
+              <span class="cred-text"><strong>Práce s dětmi v náhradní rodinné péči</strong> – 272 hodin (2023–2025)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CO NABÍZÍM ─────────────────────────────── -->
+  <section class="section" id="co-nabizim">
+    <div class="container">
+      <span class="section-label">Co nabízím</span>
+      <h2 class="section-title">Jak vám mohu<br><em>pomoci</em></h2>
+      <p class="section-lead">Ať řešíte vztahové obtíže, osobní krizi, nebo jen cítíte, že něco není tak, jak by mohlo být — jsem tu pro vás.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-card-icon">🤝</div>
+          <h3>Vztahy a komunikace</h3>
+          <p>Pomáhám zpracovat obtíže ve vztazích s partnerem, rodinou nebo přáteli. Hledáme společně, co se v komunikaci a vzájemném porozumění zaseklo.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">🌱</div>
+          <h3>Osobní rozvoj</h3>
+          <p>Pokud cítíte, že chcete lépe poznat sami sebe, porozumět svým vzorcům nebo změnit to, co vám v životě nefunguje.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">💭</div>
+          <h3>Úzkost a nálada</h3>
+          <p>Zvládání úzkosti, pocitů přetížení, smutku nebo ztráty. Pracuji s emocemi bezpečně a v tempu, které vám vyhovuje.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">👨‍👩‍👧</div>
+          <h3>Rodinná dynamika</h3>
+          <p>Speciální zkušenosti s náhradní rodinnou péčí, výchovou a rodinným systémem. Rozumím složitosti rodinných vztahů.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-icon">🆘</div>
+          <h3>Krize a náročné situace</h3>
+          <p>Výcvik v krizové intervenci (150 hodin) mi dává nástroje pro práci v situacích, kdy je třeba rychlá a stabilní opora.</p>
+        </div>
+
+        <div class="service-card service-card-highlight">
+          <div class="sc-hi-left">
+            <div class="service-card-icon" style="background:rgba(255,255,255,.08);margin-bottom:20px;font-size:1.3rem;">🎯</div>
+            <h3>Individuální konzultace – na míru</h3>
+            <p>Každé sezení přizpůsobuji vašim potřebám. Nepracuji podle šablony — vycházím z toho, co vy přinášíte, a přistupuji k vám jako k celé osobě.</p>
+          </div>
+          <div class="sc-hi-right">
+            <h4>Jak to probíhá</h4>
+            <div class="sc-steps">
+              <div class="sc-step"><div class="sc-step-dot"></div>Úvodní konzultace — poznáme se a zmapujeme situaci</div>
+              <div class="sc-step"><div class="sc-step-dot"></div>Společně stanovíme, na čem chcete pracovat</div>
+              <div class="sc-step"><div class="sc-step-dot"></div>Pravidelná sezení 50 minut v bezpečném prostoru</div>
+              <div class="sc-step"><div class="sc-step-dot"></div>Postup průběžně reflektujeme a přizpůsobujeme</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CENÍK ──────────────────────────────────── -->
+  <section class="section pricing" id="cenik">
+    <div class="container">
+      <span class="section-label">Ceník</span>
+      <h2 class="section-title">Transparentní <em>ceny</em></h2>
+      <p class="section-lead">Platba převodem na účet min. 48 hodin před setkáním. Nejsem plátce DPH.</p>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <h3>Jednotlivá konzultace</h3>
+          <div class="price-duration">50 minut</div>
+          <div class="price-amount">1 000</div>
+          <div class="price-per">Kč za sezení</div>
+          <div class="price-divider"></div>
+          <p class="price-note">Ideální pro první setkání nebo pro ty, kteří chtějí flexibilitu bez závazku.</p>
+        </div>
+
+        <div class="price-card price-card-featured">
+          <div class="price-badge">Nejoblíbenější</div>
+          <h3>Balíček 5 sezení</h3>
+          <div class="price-duration">5 × 50 minut</div>
+          <div class="price-amount">4 750</div>
+          <div class="price-per">Kč celkem</div>
+          <div class="price-saving">Úspora 250 Kč</div>
+          <div class="price-divider"></div>
+          <p class="price-note">Skvělý pro zahájení terapeutické práce a udržení pravidelného tempa.</p>
+        </div>
+
+        <div class="price-card">
+          <h3>Balíček 10 sezení</h3>
+          <div class="price-duration">10 × 50 minut</div>
+          <div class="price-amount">9 000</div>
+          <div class="price-per">Kč celkem</div>
+          <div class="price-divider"></div>
+          <p class="price-note">Nejvýhodnější varianta pro hlubší a dlouhodobější terapeutickou práci.</p>
+        </div>
+
+      </div>
+
+      <div class="pricing-info">
+        <div>
+          <h4>Platební údaje</h4>
+          <p>
+            Číslo účtu: <strong>334496747/0300</strong><br>
+            IBAN: CZ5303000000000334496747<br><br>
+            Platbu prosím proveďte min. 48 hodin před sezením. Nejsem plátce DPH.
+          </p>
+        </div>
+        <div>
+          <h4>Storno podmínky</h4>
+          <ul>
+            <li>Zrušení více než 48 h předem — bez poplatku</li>
+            <li>Zrušení 24–48 h předem — 50 % ceny sezení</li>
+            <li>Zrušení méně než 24 h / nedostavení — 100 % ceny</li>
+            <li>Ve výjimečných případech lze dohodnout individuálně</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── REZERVACE ────────────────────────────────── -->
+  <section class="section booking" id="rezervace">
+    <div class="container">
+      <span class="section-label">Online rezervace</span>
+      <h2 class="section-title">Vyberte si <em>termín</em></h2>
+      <div class="booking-wrap">
+        <div class="booking-info">
+          <p>Vyberte den a čas, který vám vyhovuje. Po potvrzení vám zašlu platební údaje a vše potřebné e-mailem. Sezení trvá 50 minut.</p>
+          <div class="booking-steps">
+            <div class="booking-step">
+              <div class="booking-step-num">1</div>
+              <div class="booking-step-text"><strong>Zvolte den</strong>Klikněte na dostupný termín v kalendáři</div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">2</div>
+              <div class="booking-step-text"><strong>Vyberte čas</strong>Zvolte dostupný časový slot</div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">3</div>
+              <div class="booking-step-text"><strong>Vyplňte kontakt</strong>Jméno a e-mail pro potvrzení</div>
+            </div>
+            <div class="booking-step">
+              <div class="booking-step-num">4</div>
+              <div class="booking-step-text"><strong>Hotovo!</strong>Dostanete e-mail s platebními údaji</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cal-widget">
+          <!-- Calendar header -->
+          <div class="cal-header">
+            <h3 id="cal-month-label">Duben 2026</h3>
+            <div class="cal-nav">
+              <button onclick="calPrev()" aria-label="Předchozí měsíc">‹</button>
+              <button onclick="calNext()" aria-label="Další měsíc">›</button>
+            </div>
+          </div>
+          <!-- Day names -->
+          <div class="cal-grid-header">
+            <span>Po</span><span>Út</span><span>St</span><span>Čt</span><span>Pá</span><span>So</span><span>Ne</span>
+          </div>
+          <!-- Day grid -->
+          <div class="cal-grid" id="cal-grid"></div>
+
+          <!-- Time slots (shown after day selection) -->
+          <div class="time-slots" id="time-slots">
+            <div class="time-slots-label" id="slots-label">Dostupné časy</div>
+            <div class="slots-grid" id="slots-grid"></div>
+          </div>
+
+          <!-- Booking form (shown after time selection) -->
+          <div class="booking-form" id="booking-form">
+            <div class="booking-summary" id="booking-summary"></div>
+            <div class="form-group">
+              <label>Jméno a příjmení</label>
+              <input type="text" id="book-name" placeholder="Jana Nováková">
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" id="book-email" placeholder="jana@email.cz">
+            </div>
+            <button class="btn-book" onclick="confirmBooking()">Potvrdit rezervaci</button>
+          </div>
+
+          <!-- Success state -->
+          <div class="booking-success" id="booking-success">
+            <div class="booking-success-icon">✅</div>
+            <h4>Rezervace přijata!</h4>
+            <p>Na váš e-mail zašlu potvrzení s platebními údaji a dalšími informacemi. Těším se na setkání.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA STRIP ──────────────────────────────── -->
+  <section class="strip">
+    <div class="container">
+      <h2>Udělejte první krok.<br><em>Ozvěte se.</em></h2>
+      <p>Napište zprávu nebo zavolejte. Ráda si s vámi promluvím o tom, co potřebujete, a společně najdeme cestu vpřed.</p>
+      <a href="#kontakt" class="btn-primary">Kontaktovat Gabrielu</a>
+    </div>
+  </section>
+
+  <!-- ── KONTAKT ────────────────────────────────── -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Kontakt</span>
+          <h2 class="section-title">Ozvěte se<br><em>kdykoliv</em></h2>
+          <p class="section-lead">Pro objednání nebo dotaz mi napište zprávu přes formulář, nebo využijte e-mail či telefon.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <div class="contact-label">E-mail</div>
+                <div class="contact-val"><a href="mailto:barvadozivota@gmail.com">barvadozivota@gmail.com</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-label">Telefon</div>
+                <div class="contact-val"><a href="tel:+420775297931">+420 775 297 931</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Adresa</div>
+                <div class="contact-val">Porubská 1013/21</div>
+                <div class="contact-sub">708 00 Ostrava</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🏢</div>
+              <div>
+                <div class="contact-label">IČO</div>
+                <div class="contact-val">21055335</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Napište mi</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Jméno</label>
+              <input type="text" placeholder="Jana Nováková">
+            </div>
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" placeholder="jana@email.cz">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Zpráva</label>
+            <textarea placeholder="Popište stručně, s čím bych vám mohla pomoci, nebo kdy se vám hodí termín…"></textarea>
+          </div>
+          <button class="form-submit" onclick="handleForm(event)">Odeslat zprávu</button>
+          <p class="form-note">Odpovídám obvykle do 24 hodin v pracovní dny. Veškeré informace jsou přísně důvěrné.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-brand">Barva do života</a>
+      <ul class="footer-links">
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#co-nabizim">Co nabízím</a></li>
+        <li><a href="#cenik">Ceník</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <span>© 2025 Mgr. Gabriela Smolková &nbsp;·&nbsp; IČO: 21055335</span>
+      <span>barvadozivota@gmail.com &nbsp;·&nbsp; +420 775 297 931</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── REZERVAČNÍ KALENDÁŘ ───────────────────────────
+const MONTHS_CS = ['Leden','Únor','Březen','Duben','Květen','Červen','Červenec','Srpen','Září','Říjen','Listopad','Prosinec'];
+const DAYS_CS   = ['Pondělí','Úterý','Středa','Čtvrtek','Pátek','Sobota','Neděle'];
+
+// Dostupné sloty (Po–Pá, časy)
+const AVAILABLE_TIMES = ['9:00','10:00','11:00','13:00','14:00','15:00','16:00'];
+// Simulované obsazené sloty: "YYYY-M-D:H:MM"
+const TAKEN_SLOTS = {};
+
+let calYear, calMonth, calSelectedDay = null, calSelectedTime = null;
+
+function calInit(){
+  const now = new Date();
+  calYear  = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCal();
+}
+
+function calPrev(){
+  calMonth--;
+  if(calMonth < 0){ calMonth = 11; calYear--; }
+  calSelectedDay = null; calSelectedTime = null;
+  resetSlots(); renderCal();
+}
+function calNext(){
+  calMonth++;
+  if(calMonth > 11){ calMonth = 0; calYear++; }
+  calSelectedDay = null; calSelectedTime = null;
+  resetSlots(); renderCal();
+}
+
+function renderCal(){
+  document.getElementById('cal-month-label').textContent = MONTHS_CS[calMonth] + ' ' + calYear;
+  const grid = document.getElementById('cal-grid');
+  const today = new Date(); today.setHours(0,0,0,0);
+  const first = new Date(calYear, calMonth, 1);
+  const last  = new Date(calYear, calMonth+1, 0);
+  // Mon=0 … Sun=6
+  let startDow = (first.getDay() + 6) % 7;
+  let days = [];
+  // Prev month padding
+  for(let i = startDow-1; i >= 0; i--){
+    const d = new Date(calYear, calMonth, -i);
+    days.push({ date: d, cur: false });
+  }
+  for(let d = 1; d <= last.getDate(); d++){
+    days.push({ date: new Date(calYear, calMonth, d), cur: true });
+  }
+  // Next month padding to fill grid
+  while(days.length % 7 !== 0){
+    const d = new Date(calYear, calMonth+1, days.length - last.getDate() - startDow + 1);
+    days.push({ date: d, cur: false });
+  }
+
+  grid.innerHTML = days.map(({date, cur}) => {
+    const dow = (date.getDay() + 6) % 7; // 0=Mon
+    const isPast   = date < today;
+    const isToday  = date.getTime() === today.getTime();
+    const isWeekend= dow >= 5;
+    const key = date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate();
+    const isSel = calSelectedDay && calSelectedDay === key;
+    let cls = 'cal-day';
+    if(!cur) cls += ' other-month';
+    else if(isPast || isWeekend) cls += ' unavailable';
+    else if(isSel) cls += ' available selected';
+    else cls += ' available';
+    if(isToday && !isSel) cls += ' today';
+    const onclick = (!isPast && !isWeekend && cur) ? `selectDay('${key}', ${date.getDate()})` : '';
+    return `<div class="${cls}" ${onclick?'onclick="'+onclick+'"':''}>${date.getDate()}</div>`;
+  }).join('');
+}
+
+function selectDay(key, dayNum){
+  calSelectedDay = key;
+  calSelectedTime = null;
+  document.getElementById('booking-form').classList.remove('visible');
+  document.getElementById('booking-success').style.display = 'none';
+  renderCal();
+  renderSlots(key, dayNum);
+}
+
+function renderSlots(key, dayNum){
+  const [y, m, d] = key.split('-').map(Number);
+  const dateStr = DAYS_CS[((new Date(y,m,d).getDay()+6)%7)] + ' ' + dayNum + '. ' + MONTHS_CS[m];
+  document.getElementById('slots-label').textContent = 'Dostupné časy – ' + dateStr;
+  const taken = TAKEN_SLOTS[key] || [];
+  document.getElementById('slots-grid').innerHTML = AVAILABLE_TIMES.map(t => {
+    const isTaken = taken.includes(t);
+    return `<div class="slot${isTaken?' taken':''}" ${isTaken?'':' onclick="selectSlot(\''+key+'\',\''+t+'\',\''+dateStr+'\')"'}>${t}</div>`;
+  }).join('');
+  document.getElementById('time-slots').classList.add('visible');
+}
+
+function selectSlot(key, time, dateStr){
+  calSelectedTime = time;
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+  event.target.classList.add('selected');
+  const summary = document.getElementById('booking-summary');
+  summary.innerHTML = `<strong>📅 ${dateStr}</strong><br>⏰ ${time} (50 minut)<br>💳 Platba převodem min. 48 h předem`;
+  document.getElementById('booking-form').classList.add('visible');
+}
+
+function confirmBooking(){
+  const name  = document.getElementById('book-name').value.trim();
+  const email = document.getElementById('book-email').value.trim();
+  if(!name){ document.getElementById('book-name').focus(); return; }
+  if(!email || !email.includes('@')){ document.getElementById('book-email').focus(); return; }
+  // Mark slot as taken
+  if(!TAKEN_SLOTS[calSelectedDay]) TAKEN_SLOTS[calSelectedDay] = [];
+  TAKEN_SLOTS[calSelectedDay].push(calSelectedTime);
+  document.getElementById('booking-form').classList.remove('visible');
+  document.getElementById('time-slots').classList.remove('visible');
+  document.getElementById('booking-success').style.display = 'block';
+  // Reset form
+  document.getElementById('book-name').value = '';
+  document.getElementById('book-email').value = '';
+}
+
+function resetSlots(){
+  document.getElementById('time-slots').classList.remove('visible');
+  document.getElementById('booking-form').classList.remove('visible');
+  document.getElementById('booking-success').style.display = 'none';
+}
+
+calInit();
+
+// ── SCROLL REVEAL ──────────────────────────────────
+// Header scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  const m = document.getElementById('mobile-menu');
+  if(m.classList.contains('open') && !m.contains(e.target) && !e.target.closest('.nav-toggle')) closeMenu();
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' }); closeMenu(); }
+  });
+});
+
+// Form
+function handleForm(e){
+  const btn = e.target;
+  btn.textContent = 'Odesláno ✓';
+  btn.style.background = 'var(--sage2)';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = 'Odeslat zprávu'; btn.style.background = ''; btn.disabled = false; }, 3500);
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.service-card, .price-card, .cred-item, .contact-item').forEach(el => {
+  el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease'; obs.observe(el);
+});
+</script>
+</body>
+</html>
